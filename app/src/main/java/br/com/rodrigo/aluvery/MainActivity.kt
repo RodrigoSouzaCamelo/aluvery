@@ -5,7 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -37,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    ProductItem()
+                    ProductSection()
                 }
             }
         }
@@ -45,9 +47,32 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun ProductSection() {
+    Column {
+        Text(
+            text = "Sale",
+            fontSize = 20.sp,
+            fontWeight = FontWeight(400),
+            modifier = Modifier
+                .padding(start = 16.dp, end = 16.dp, top = 16.dp)
+        )
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier
+                .padding(top = 8.dp, bottom = 16.dp)
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState())
+        ) {
+            Spacer(Modifier)
+            repeat(3) { ProductItem() }
+            Spacer(Modifier)
+        }
+    }
+}
+
+@Composable
 fun ProductItem() {
     Surface(
-        modifier = Modifier.padding(8.dp),
         shape = RoundedCornerShape(15.dp),
         elevation = 4.dp
     ) {
@@ -102,8 +127,16 @@ fun ProductItem() {
 
 @Preview(name = "ProductItem", showBackground = true)
 @Composable
-fun ProductItemPreview() {
+private fun ProductItemPreview() {
     AluveryTheme {
         ProductItem()
+    }
+}
+
+@Preview(name = "ProductSection", showBackground = true)
+@Composable
+private fun ProductSectionPreview() {
+    AluveryTheme {
+        ProductSection()
     }
 }
