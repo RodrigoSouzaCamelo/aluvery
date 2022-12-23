@@ -1,10 +1,10 @@
 package br.com.rodrigo.aluvery.ui.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -24,8 +24,7 @@ import br.com.rodrigo.aluvery.R
 import br.com.rodrigo.aluvery.extensions.toEUACurrency
 import br.com.rodrigo.aluvery.models.Product
 import br.com.rodrigo.aluvery.ui.theme.AluveryTheme
-import br.com.rodrigo.aluvery.ui.theme.Purple500
-import br.com.rodrigo.aluvery.ui.theme.Teal200
+import coil.compose.AsyncImage
 import java.math.BigDecimal
 
 @Composable
@@ -45,15 +44,19 @@ fun ProductItem(product: Product) {
                     .height(imageSize)
                     .background(
                         brush = Brush.horizontalGradient(
-                            colors = listOf(Purple500, Teal200)
+                            colors = listOf(
+                                MaterialTheme.colors.primary ,
+                                MaterialTheme.colors.secondary
+                            )
                         )
                     )
                     .fillMaxWidth()
             ) {
-                Image(
-                    painter = painterResource(id = product.image),
+                AsyncImage(
+                    model = product.image,
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
+                    placeholder = painterResource(R.drawable.placeholder),
                     modifier = Modifier
                         .size(imageSize)
                         .offset(y = imageSize / 2)
@@ -88,12 +91,13 @@ fun ProductItem(product: Product) {
 @Composable
 private fun ProductItemPreview() {
     AluveryTheme {
-        ProductItem(
-            product = Product(
-                name = LoremIpsum(50).values.first(),
-                price = BigDecimal("14.99"),
-                image = R.drawable.placeholder
+        Surface {
+            ProductItem(
+                product = Product(
+                    name = LoremIpsum(50).values.first(),
+                    price = BigDecimal("14.99")
+                )
             )
-        )
+        }
     }
 }

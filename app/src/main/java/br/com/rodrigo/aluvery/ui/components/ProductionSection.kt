@@ -3,6 +3,7 @@ package br.com.rodrigo.aluvery.ui.components
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -10,10 +11,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.rodrigo.aluvery.R
 import br.com.rodrigo.aluvery.models.Product
+import br.com.rodrigo.aluvery.sampledata.sampleProducts
 import br.com.rodrigo.aluvery.ui.theme.AluveryTheme
-import java.math.BigDecimal
 
 @Composable
 fun ProductSection(title: String, products: List<Product>) {
@@ -43,24 +43,8 @@ fun ProductSection(title: String, products: List<Product>) {
 @Composable
 private fun ProductSectionPreview() {
     AluveryTheme {
-        ProductSection(title = "Sale", products = sampleProducts)
+        Surface {
+            ProductSection(title = "Sale", products = sampleProducts)
+        }
     }
 }
-
-val sampleProducts = listOf(
-    Product(
-        name = "Burger",
-        price = BigDecimal("12.99"),
-        image = R.drawable.burger
-    ),
-    Product(
-        name = "Pizza",
-        price = BigDecimal("19.99"),
-        image = R.drawable.pizza
-    ),
-    Product(
-        name = "Fries",
-        price = BigDecimal("7.99"),
-        image = R.drawable.fries
-    )
-)
