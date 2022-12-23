@@ -1,11 +1,9 @@
 package br.com.rodrigo.aluvery.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,17 +16,18 @@ import br.com.rodrigo.aluvery.ui.theme.AluveryTheme
 
 @Composable
 fun HomeScreen(sections: Map<String, List<Product>>) {
-    Column(
+    LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
     ) {
-        Spacer(Modifier)
+        item { Spacer(Modifier) }
 
-        sections.map { (title, products) -> ProductSection(title, products) }
+        sections.map { (title, products) ->
+            item { ProductSection(title, products) }
+        }
 
-        Spacer(Modifier)
+        item { Spacer(Modifier) }
     }
 }
 

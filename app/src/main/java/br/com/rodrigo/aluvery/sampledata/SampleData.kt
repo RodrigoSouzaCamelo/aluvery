@@ -64,6 +64,6 @@ val sampleProducts: List<Product> = listOf(
 
 val sampleSections = mapOf(
     "Sale" to sampleProducts,
-    "Candis" to sampleCandies,
+    "Candies " to sampleCandies,
     "Drinks" to sampleDrinks
 )
