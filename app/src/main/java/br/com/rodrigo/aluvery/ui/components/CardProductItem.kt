@@ -2,6 +2,7 @@ package br.com.rodrigo.aluvery.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -23,11 +24,13 @@ import coil.compose.AsyncImage
 @Composable
 fun CardProductItem(
     product: Product,
+    modifier: Modifier = Modifier,
     elevation: Dp = 4.dp
 ) {
     Card(
         elevation = elevation,
-        modifier = Modifier
+        shape = RoundedCornerShape(15.dp),
+        modifier = modifier
             .fillMaxWidth()
             .heightIn(150.dp)
     ) {

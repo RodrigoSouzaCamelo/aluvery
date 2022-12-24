@@ -16,8 +16,12 @@ import br.com.rodrigo.aluvery.sampledata.sampleProducts
 import br.com.rodrigo.aluvery.ui.theme.AluveryTheme
 
 @Composable
-fun ProductSection(title: String, products: List<Product>) {
-    Column {
+fun ProductSection(
+    title: String,
+    products: List<Product>,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier) {
         Text(
             text = title,
             fontSize = 20.sp,
@@ -27,7 +31,7 @@ fun ProductSection(title: String, products: List<Product>) {
         )
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
-            contentPadding = PaddingValues(horizontal = 16.dp) ,
+            contentPadding = PaddingValues(horizontal = 16.dp),
             modifier = Modifier
                 .padding(top = 8.dp)
                 .fillMaxWidth()
