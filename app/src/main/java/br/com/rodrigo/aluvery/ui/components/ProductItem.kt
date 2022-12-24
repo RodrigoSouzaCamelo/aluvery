@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.rodrigo.aluvery.R
-import br.com.rodrigo.aluvery.extensions.toEUACurrency
+import br.com.rodrigo.aluvery.extensions.toUSACurrency
 import br.com.rodrigo.aluvery.models.Product
 import br.com.rodrigo.aluvery.ui.theme.AluveryTheme
 import coil.compose.AsyncImage
@@ -76,7 +76,7 @@ fun ProductItem(product: Product) {
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = product.price.toEUACurrency(),
+                    text = product.price.toUSACurrency(),
                     modifier = Modifier.padding(top = 8.dp),
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400)
