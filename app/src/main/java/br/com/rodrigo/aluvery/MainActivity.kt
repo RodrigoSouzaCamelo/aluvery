@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import br.com.rodrigo.aluvery.sampledata.sampleSections
 import br.com.rodrigo.aluvery.ui.screens.HomeScreen
 import br.com.rodrigo.aluvery.ui.theme.AluveryTheme
 
@@ -28,7 +29,7 @@ fun App() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            HomeScreen()
+            HomeScreen(sampleSections)
         }
     }
 }
